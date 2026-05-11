@@ -1,8 +1,17 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import { DialogText } from "../components/DialogText";
 
-export default {
+const meta: Meta<typeof DialogText> = {
   title: "DialogText",
   component: DialogText,
-};
+} satisfies Meta<typeof DialogText>;
 
-export const Default = () => <DialogText text="123" />;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
+  args: {
+    text: "Example dialog text",
+  },
+};
