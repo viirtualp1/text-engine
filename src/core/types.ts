@@ -22,7 +22,7 @@ export interface TextEngineSequenceStepDialog {
   text: string;
 }
 
-enum TextEngineSequenceActionType {
+export enum TextEngineSequenceActionType {
   QTE = "qte",
   CHOOSE_ONE = "choose_one",
 }

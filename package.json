@@ -1,32 +1,43 @@
 {
   "name": "text-engine",
   "version": "1.0.0",
-  "description": "",
+  "description": "Text engine for building text-based applications",
   "license": "ISC",
   "author": "viirtualp1",
   "type": "module",
   "main": "dist/index.js",
+  "exports": {
+    "./core": {
+      "import": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./ui": {
+      "import": "./dist/ui/index.js",
+      "types": "./dist/ui/index.d.ts"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "tsup",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.2",
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/addon-vitest": "^10.3.6",
+    "@storybook/react-vite": "^10.3.6",
     "@types/node": "^25.6.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "typescript": "^6.0.3",
-    "storybook": "^10.3.6",
-    "@storybook/react-vite": "^10.3.6",
-    "@chromatic-com/storybook": "^5.1.2",
-    "@storybook/addon-vitest": "^10.3.6",
-    "@storybook/addon-a11y": "^10.3.6",
-    "@storybook/addon-docs": "^10.3.6",
-    "vitest": "^4.1.5",
-    "playwright": "^1.59.1",
     "@vitest/browser-playwright": "^4.1.5",
-    "@vitest/coverage-v8": "^4.1.5"
+    "@vitest/coverage-v8": "^4.1.5",
+    "playwright": "^1.59.1",
+    "storybook": "^10.3.6",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
   },
   "dependencies": {
     "react": "^19.2.6",
