@@ -5,20 +5,32 @@
   "license": "ISC",
   "author": "viirtualp1",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "./dist/core/index.js",
+  "types": "./dist/core/index.d.ts",
   "exports": {
     "./core": {
+      "types": "./dist/core/index.d.ts",
       "import": "./dist/core/index.js",
-      "types": "./dist/core/index.d.ts"
+      "require": "./dist/core/index.cjs"
     },
     "./ui": {
+      "types": "./dist/ui/index.d.ts",
       "import": "./dist/ui/index.js",
-      "types": "./dist/ui/index.d.ts"
+      "require": "./dist/ui/index.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "core": [
+        "./dist/core/index.d.ts"
+      ],
+      "ui": [
+        "./dist/ui/index.d.ts"
+      ]
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup",
+    "build": "tsup && tsc -p tsconfig.build.json",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
