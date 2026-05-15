@@ -17,6 +17,11 @@
       "types": "./dist/ui/index.d.ts",
       "import": "./dist/ui/index.js",
       "require": "./dist/ui/index.cjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs"
     }
   },
   "typesVersions": {
@@ -26,6 +31,9 @@
       ],
       "ui": [
         "./dist/ui/index.d.ts"
+      ],
+      "types": [
+        "./dist/types/index.d.ts"
       ]
     }
   },
@@ -52,7 +60,9 @@
     "vitest": "^4.1.5"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.3.0"
   }
 }
