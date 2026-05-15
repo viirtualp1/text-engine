@@ -33,7 +33,8 @@ export interface TextEngineSequenceActionDispatch {
 }
 
 export interface TextEngineSequenceActionAffect {
-  character: string;
+  affectFrom: string;
+  affectTo: string;
   value: number;
 }
 

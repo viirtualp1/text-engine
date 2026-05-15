@@ -15,31 +15,30 @@ export class TextEngine {
     sequence: [],
   };
 
-  dispatch(action: TextEngineSequenceActionDispatch) {
-    if (action.affect) {
-      action.affect.forEach((affect) => {
-        const affectedCharacter = this.state.characters.find(
-          (character) => character.id === affect.character,
-        );
-
-        console.log("affected: ", affectedCharacter);
-        console.log("affect: ", affect);
-
-        if (affectedCharacter) {
-          const currentRelationship =
-            affectedCharacter.relationships[affect.character];
-          console.log("current relationship: ", currentRelationship);
-          if (!currentRelationship) {
-            return;
-          }
-
-          affectedCharacter.relationships[affect.character] =
-            currentRelationship + affect.value;
-
-          console.log("characters: ", this.state.characters);
-        }
-      });
+  public dispatch(action: TextEngineSequenceActionDispatch) {
+    if (!action.affect) {
+      return;
     }
+
+    action.affect.forEach((affect) => {
+      const affectingCharacter = this.state.characters.find((character) => {
+        return character.id === affect.affectFrom;
+      });
+      const affectedCharacter = this.state.characters.find((character) => {
+        return character.id === affect.affectTo;
+      });
+
+      if (affectedCharacter && affectingCharacter) {
+        const currentRelationship =
+          affectedCharacter.relationships[affectingCharacter.id];
+        if (!currentRelationship) {
+          return;
+        }
+
+        affectedCharacter.relationships[affectingCharacter.id] =
+          currentRelationship + affect.value;
+      }
+    });
   }
 
   constructor(initialState: TextEngineState) {
